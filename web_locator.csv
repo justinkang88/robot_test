@@ -1,0 +1,41 @@
+key,value,type
+승인대기탭,/html/body/div[1]/section/div/div[1]/div/div[2]/div[2]/div/button[3],xpath
+이메일,loginCardEmailInputField,id
+비밀번호,loginCardPasswordInputField,id
+로그인버튼,login_submit,id
+일반계정_일반,expenseSubmitReceiptFunctionBarDownload일반Item,id
+관리자_일반,expenseManagementFunctionBarDownload일반Item,id
+관리자_손익계산서,expenseManagementFunctionBarDownload손익계산서Item,id
+관리자_i-cube,expenseManagementFunctionBarDownload더존 i-CUBEItem,id
+관리자_wehago,expenseManagementFunctionBarDownload더존 WEHAGOItem,id
+영수증제출_카드검색,expenseSubmitReceiptApprovalSummaryCardBasicSelectBox,id
+이용내역관리_카드검색,expenseManagementApprovalSummaryCardBasicSelectBox,id
+제출정보_수정,expenseDetailToggleEditButton,id
+용도검색,expenseDetailNewPurposeBasicSelectBox,id
+외부사용자_추가,participantsSelectBoxAddExternalUserButton,id
+외부사용자 추가_이름,addExternalUserUserNameInputField,id
+외부사용자 추가_회사명,addExternalUserCompanyNameInputField,id
+영수증 상세_저장,expenseDetailSaveButton,id
+영수증처리_승인,approvalSelectApproveFromApprovedButton,id
+영수증처리_부분승인,approvalSelectApproveFromPartialApprovedButton,id
+영수증처리_반려,approvalSelectApproveFromRejectedButton,id
+영수증처리_승인금액,approvalSelectApprovePartialApprovedInputField,id
+영수증처리_저장,approvalSelectApproveSaveButton,id
+인증서로 전자서명 하기_롯데,cardIssueSignReviewLotteSubmitButton,id
+승인대기탭,/html/body/div[1]/section/div/div[1]/div/div[2]/div[2]/div/button[3],xpath
+다운로드_드롭다운,/html/body/div[1]/section/div/div[1]/div/div[2]/div[3]/div[2]/div[1]/div/div,xpath
+카드 드롭다운,/html/body/div[1]/section/div/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/button,xpath
+검색된 카드,/html/body/div[1]/section/div/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div[2]/div/ul/li/div/p,xpath
+용도_드롭다운,/html/body/div[2]/div/div/div/div[2]/div[2]/div/div[2]/div[1]/div/div/button,xpath
+검색된 용도,/html/body/div[2]/div/div/div/div[2]/div[2]/div/div[2]/div[1]/div/div/div[2]/div/ul/li/div,xpath
+필수입력_직접입력,/html/body/div[2]/div/div/div/div[2]/div[2]/div/div[2]/div[2]/div[2]/textarea,xpath
+필수입력_목록선택,/html/body/div[2]/div/div/div/div[2]/div[2]/div/div[2]/div[2]/div/div/div[2]/div,xpath
+선택지3,/html/body/div[2]/div/div/div/div[2]/div[2]/div/div[2]/div[2]/div/div/div[3]/div/ul/li[1],xpath
+사용자_드롭다운,/html/body/div[2]/div/div/div/div[2]/div[2]/div/div[2]/div[3]/div[2]/input,xpath
+외부사용자 추가_추가,/html/body/div[2]/div[2]/div/div[3]/button,xpath
+영수증 상세_닫기,/html/body/div[2]/div/div/div/div[1]/button[3],xpath
+이용내역 관리,/html/body/div[1]/section/aside/div[4]/button[2]/div,xpath
+이용내역 관리_총괄,/html/body/div[1]/section/aside/div[3]/button[2]/div,xpath
+관리카드승인,/html/body/div[1]/section/aside/div[2]/button[2]/div,xpath
+영수증관리 상세_닫기,/html/body/div[2]/div/div/div/div[1]/button[3],xpath
+카드관리자_등록완료,/html/body/div[2]/div[5]/div/form/div[3]/div/div[3]/button,xpath

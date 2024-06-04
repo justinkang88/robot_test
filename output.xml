@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.9 on darwin)" generated="20240604 14:32:08.210" rpa="false" schemaversion="3">
+<suite id="s1" name="Robottest" source="/Users/gowid/Desktop/cucuumber/robottest.robot">
+<test id="s1-t1" name="My Test" line="18">
+<kw name="Log" library="BuiltIn">
+<arg>${MESSAGE}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240604 14:32:08.307" level="INFO">Hello, world!</msg>
+<status status="PASS" starttime="20240604 14:32:08.306" endtime="20240604 14:32:08.307"/>
+</kw>
+<kw name="My Keyword">
+<arg>/Users/gowid/Desktop/cucuumber</arg>
+<kw name="Directory Should Exist" library="OperatingSystem">
+<arg>${path}</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<msg timestamp="20240604 14:32:08.308" level="INFO" html="true">Directory '&lt;a href="file:///Users/gowid/Desktop/cucuumber"&gt;/Users/gowid/Desktop/cucuumber&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20240604 14:32:08.308" endtime="20240604 14:32:08.308"/>
+</kw>
+<status status="PASS" starttime="20240604 14:32:08.307" endtime="20240604 14:32:08.308"/>
+</kw>
+<doc>Example test.</doc>
+<status status="PASS" starttime="20240604 14:32:08.306" endtime="20240604 14:32:08.308"/>
+</test>
+<test id="s1-t2" name="Another Test" line="23">
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${MESSAGE}</arg>
+<arg>Hello, world!</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240604 14:32:08.308" endtime="20240604 14:32:08.309"/>
+</kw>
+<status status="PASS" starttime="20240604 14:32:08.308" endtime="20240604 14:32:08.309"/>
+</test>
+<test id="s1-t3" name="승인내역 생성" line="26">
+<kw name="Connect To Database" library="DatabaseLibrary">
+<arg>dbapiModuleName=pymysql</arg>
+<arg>dbName=gowid</arg>
+<arg>dbUsername=justinkang</arg>
+<arg>dbPassword=qwe123!@#</arg>
+<arg>dbHost=34.64.33.60</arg>
+<arg>dbCharset=utf8</arg>
+<arg>dbPort=3306</arg>
+<doc>Loads the DB API 2.0 module given ``dbapiModuleName`` then uses it to
+connect to the database using provided parameters such as ``dbName``, ``dbUsername``, and ``dbPassword``.</doc>
+<msg timestamp="20240604 14:32:08.337" level="INFO">Connecting using : pymysql.connect(db=gowid, user=justinkang, passwd=***, host=34.64.33.60, port=3306, charset=utf8)</msg>
+<status status="PASS" starttime="20240604 14:32:08.309" endtime="20240604 14:32:08.367"/>
+</kw>
+<kw name="Query" library="DatabaseLibrary">
+<var>${cardid}</var>
+<arg>select card_id from expense.card where card_number = '510554******1914' and corp_id = '1074'</arg>
+<doc>Runs a query with the ``selectStatement`` and returns the result as a list of rows.
+The type of row values depends on the database module -
+usually they are tuples or tuple-like objects.</doc>
+<msg timestamp="20240604 14:32:08.367" level="INFO">Executing : Query  |  select card_id from expense.card where card_number = '510554******1914' and corp_id = '1074' </msg>
+<msg timestamp="20240604 14:32:08.379" level="INFO">${cardid} = ((5791,),)</msg>
+<status status="PASS" starttime="20240604 14:32:08.367" endtime="20240604 14:32:08.380"/>
+</kw>
+<kw name="Query" library="DatabaseLibrary">
+<var>${userid}</var>
+<arg>select card_user_id from expense.card where card_number = '510554******1914' and corp_id = '1074'</arg>
+<doc>Runs a query with the ``selectStatement`` and returns the result as a list of rows.
+The type of row values depends on the database module -
+usually they are tuples or tuple-like objects.</doc>
+<msg timestamp="20240604 14:32:08.380" level="INFO">Executing : Query  |  select card_user_id from expense.card where card_number = '510554******1914' and corp_id = '1074' </msg>
+<msg timestamp="20240604 14:32:08.395" level="INFO">${userid} = ((9293,),)</msg>
+<status status="PASS" starttime="20240604 14:32:08.380" endtime="20240604 14:32:08.395"/>
+</kw>
+<kw name="Query" library="DatabaseLibrary">
+<var>${aprvhid}</var>
+<arg>select approval_hist_id from expense.expense order by expense_id desc limit 1</arg>
+<doc>Runs a query with the ``selectStatement`` and returns the result as a list of rows.
+The type of row values depends on the database module -
+usually they are tuples or tuple-like objects.</doc>
+<msg timestamp="20240604 14:32:08.395" level="INFO">Executing : Query  |  select approval_hist_id from expense.expense order by expense_id desc limit 1 </msg>
+<msg timestamp="20240604 14:32:08.407" level="INFO">${aprvhid} = ((191253,),)</msg>
+<status status="PASS" starttime="20240604 14:32:08.395" endtime="20240604 14:32:08.407"/>
+</kw>
+<kw name="Query" library="DatabaseLibrary">
+<var>${expenseid}</var>
+<arg>select expense_id from expense.expense order by expense_id desc limit 1</arg>
+<doc>Runs a query with the ``selectStatement`` and returns the result as a list of rows.
+The type of row values depends on the database module -
+usually they are tuples or tuple-like objects.</doc>
+<msg timestamp="20240604 14:32:08.408" level="INFO">Executing : Query  |  select expense_id from expense.expense order by expense_id desc limit 1 </msg>
+<msg timestamp="20240604 14:32:08.422" level="INFO">${expenseid} = ((2345145451,),)</msg>
+<status status="PASS" starttime="20240604 14:32:08.408" endtime="20240604 14:32:08.422"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${iaprvhid}</var>
+<arg>${aprvhid}[0][0] + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240604 14:32:08.422" level="INFO">${iaprvhid} = 191254</msg>
+<status status="PASS" starttime="20240604 14:32:08.422" endtime="20240604 14:32:08.422"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${iexpenseid}</var>
+<arg>${expenseid}[0][0] + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240604 14:32:08.422" level="INFO">${iexpenseid} = 2345145452</msg>
+<status status="PASS" starttime="20240604 14:32:08.422" endtime="20240604 14:32:08.423"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${icardid}</var>
+<arg>${cardid}[0][0]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240604 14:32:08.423" level="INFO">${icardid} = 5791</msg>
+<status status="PASS" starttime="20240604 14:32:08.423" endtime="20240604 14:32:08.423"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${iuserid}</var>
+<arg>${userid}[0][0]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240604 14:32:08.423" level="INFO">${iuserid} = 9293</msg>
+<status status="PASS" starttime="20240604 14:32:08.423" endtime="20240604 14:32:08.423"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${storerandnumb}</var>
+<arg>length=4</arg>
+<arg>chars=0123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20240604 14:32:08.424" level="INFO">${storerandnumb} = 4910</msg>
+<status status="PASS" starttime="20240604 14:32:08.423" endtime="20240604 14:32:08.424"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${storename}</var>
+<arg>또순이백순대${storerandnumb}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240604 14:32:08.424" level="INFO">${storename} = 또순이백순대4910</msg>
+<status status="PASS" starttime="20240604 14:32:08.424" endtime="20240604 14:32:08.424"/>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<var>${date}</var>
+<arg>result_format=%Y%m%d</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20240604 14:32:08.425" level="INFO">${date} = 20240604</msg>
+<status status="PASS" starttime="20240604 14:32:08.424" endtime="20240604 14:32:08.425"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${iaprvid}</var>
+<arg>length=9</arg>
+<arg>chars=0123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20240604 14:32:08.425" level="INFO">${iaprvid} = 712129004</msg>
+<status status="PASS" starttime="20240604 14:32:08.425" endtime="20240604 14:32:08.425"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${sqlquery}</var>
+<arg>INSERT INTO expense.expense(expense_id,created_at,updated_at,approval_hist_id,approval_status,card_approval_number,card_number,company_code,currency,expense_date,expense_time,krw_amount,store_address,store_name,use_amount,card_id,corp_id,user_id,vat,card_approval_date,card_approval_time,is_notified,expense_type,origin_type,is_hide,is_deleted) VALUES ('${iexpenseid}',now(),now(),'${iaprvhid}','NOT_SUBMITTED','${iaprvid}',5105545000831914,'0311','KRW','${date}','162025',10000,'경기 안양시 동안구 관평로170번길 43 101호','${storename}',10000,${icardid},1074,${iuserid},'0','${date}','162025',1,1,'CMS',0,0)</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240604 14:32:08.426" level="INFO">${sqlquery} = INSERT INTO expense.expense(expense_id,created_at,updated_at,approval_hist_id,approval_status,card_approval_number,card_number,company_code,currency,expense_date,expense_time,krw_amount,store_address,...</msg>
+<status status="PASS" starttime="20240604 14:32:08.425" endtime="20240604 14:32:08.426"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${sqlquery}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240604 14:32:08.426" level="INFO">INSERT INTO expense.expense(expense_id,created_at,updated_at,approval_hist_id,approval_status,card_approval_number,card_number,company_code,currency,expense_date,expense_time,krw_amount,store_address,store_name,use_amount,card_id,corp_id,user_id,vat,card_approval_date,card_approval_time,is_notified,expense_type,origin_type,is_hide,is_deleted) VALUES ('2345145452',now(),now(),'191254','NOT_SUBMITTED','712129004',5105545000831914,'0311','KRW','20240604','162025',10000,'경기 안양시 동안구 관평로170번길 43 101호','또순이백순대4910',10000,5791,1074,9293,'0','20240604','162025',1,1,'CMS',0,0)</msg>
+<status status="PASS" starttime="20240604 14:32:08.426" endtime="20240604 14:32:08.426"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${storename}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240604 14:32:08.427" level="INFO">또순이백순대4910</msg>
+<status status="PASS" starttime="20240604 14:32:08.426" endtime="20240604 14:32:08.427"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${sqlquery}</arg>
+<doc>Executes the ``sqlString`` as a single SQL command.</doc>
+<msg timestamp="20240604 14:32:08.427" level="INFO">Executing : Execute SQL String  |  INSERT INTO expense.expense(expense_id,created_at,updated_at,approval_hist_id,approval_status,card_approval_number,card_number,company_code,currency,expense_date,expense_time,krw_amount,store_address,store_name,use_amount,card_id,corp_id,user_id,vat,card_approval_date,card_approval_time,is_notified,expense_type,origin_type,is_hide,is_deleted) VALUES ('2345145452',now(),now(),'191254','NOT_SUBMITTED','712129004',5105545000831914,'0311','KRW','20240604','162025',10000,'경기 안양시 동안구 관평로170번길 43 101호','또순이백순대4910',10000,5791,1074,9293,'0','20240604','162025',1,1,'CMS',0,0)</msg>
+<status status="PASS" starttime="20240604 14:32:08.427" endtime="20240604 14:32:08.451"/>
+</kw>
+<status status="PASS" starttime="20240604 14:32:08.309" endtime="20240604 14:32:08.451"/>
+</test>
+<test id="s1-t4" name="영수증 제출 - 일반 사용자" line="55">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>https://stg-expense.gowid.com/login</arg>
+<arg>Chrome</arg>
+<arg>executable_path=/Users/gowid/Desktop/cucuumber/chromedriver</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240604 14:32:08.453" level="INFO">Opening browser 'Chrome' to base url 'https://stg-expense.gowid.com/login'.</msg>
+<status status="PASS" starttime="20240604 14:32:08.452" endtime="20240604 14:32:12.048"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=loginCardEmailInputField</arg>
+<arg>text=tdg-normal1@gowid.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240604 14:32:12.049" level="INFO">Typing text 'tdg-normal1@gowid.com' into text field 'id=loginCardEmailInputField'.</msg>
+<status status="PASS" starttime="20240604 14:32:12.048" endtime="20240604 14:32:12.211"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=loginCardPasswordInputField</arg>
+<arg>text=gowid26181!</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240604 14:32:12.212" level="INFO">Typing text 'gowid26181!' into text field 'id=loginCardPasswordInputField'.</msg>
+<status status="PASS" starttime="20240604 14:32:12.211" endtime="20240604 14:32:12.295"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login_submit</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240604 14:32:12.295" level="INFO">Clicking element 'id=login_submit'.</msg>
+<status status="PASS" starttime="20240604 14:32:12.295" endtime="20240604 14:32:12.329"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>time_=3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240604 14:32:15.330" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20240604 14:32:12.329" endtime="20240604 14:32:15.331"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=/html/body/div[1]/section/aside/div[3]/button[1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240604 14:32:15.332" level="INFO">Clicking element 'xpath=/html/body/div[1]/section/aside/div[3]/button[1]'.</msg>
+<msg timestamp="20240604 14:32:15.649" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20240604 14:32:15.650" level="FAIL">Element with locator 'xpath=/html/body/div[1]/section/aside/div[3]/button[1]' not found.</msg>
+<status status="FAIL" starttime="20240604 14:32:15.331" endtime="20240604 14:32:15.651"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=expenseSubmitReceiptApprovalSummaryCardBasicSelectBox</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:15.652" endtime="20240604 14:32:15.652"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=expenseSubmitReceiptApprovalSummaryCardBasicSelectBox</arg>
+<arg>text=1914</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:15.652" endtime="20240604 14:32:15.652"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=/html/body/div[1]/section/div/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div[2]/div/ul/li/div/p</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:15.652" endtime="20240604 14:32:15.652"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>time_=3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:15.652" endtime="20240604 14:32:15.652"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=/html/body/div[1]/section/div/div[1]/div/div[2]/div[6]/table/tbody/tr[1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:15.652" endtime="20240604 14:32:15.652"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>time_=3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:15.653" endtime="20240604 14:32:15.653"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=expenseDetailToggleEditButton</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:15.653" endtime="20240604 14:32:15.653"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=expenseDetailNewPurposeBasicSelectBox</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:15.653" endtime="20240604 14:32:15.653"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=expenseDetailNewPurposeBasicSelectBox</arg>
+<arg>text=auto_사용안함</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:15.653" endtime="20240604 14:32:15.653"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=/html/body/div[2]/div/div/div/div[2]/div[2]/div/div[2]/div[1]/div/div/div[2]/div/ul/li/div</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:15.653" endtime="20240604 14:32:15.653"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=expenseDetailSaveButton</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:15.653" endtime="20240604 14:32:15.653"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>time_=3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:15.654" endtime="20240604 14:32:15.654"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=/html/body/div[2]/div/div/div/div[1]/button[3]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:15.654" endtime="20240604 14:32:15.654"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:15.654" endtime="20240604 14:32:15.654"/>
+</kw>
+<status status="FAIL" starttime="20240604 14:32:08.452" endtime="20240604 14:32:15.654">Element with locator 'xpath=/html/body/div[1]/section/aside/div[3]/button[1]' not found.</status>
+</test>
+<test id="s1-t5" name="영수증 처리 - 관리자" line="81">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>https://stg-expense.gowid.com/login</arg>
+<arg>Chrome</arg>
+<arg>executable_path=/Users/gowid/Desktop/cucuumber/chromedriver</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240604 14:32:15.656" level="INFO">Opening browser 'Chrome' to base url 'https://stg-expense.gowid.com/login'.</msg>
+<status status="PASS" starttime="20240604 14:32:15.655" endtime="20240604 14:32:19.242"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=loginCardEmailInputField</arg>
+<arg>text=tdg@gowid.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240604 14:32:19.243" level="INFO">Typing text 'tdg@gowid.com' into text field 'id=loginCardEmailInputField'.</msg>
+<status status="PASS" starttime="20240604 14:32:19.243" endtime="20240604 14:32:19.440"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=loginCardPasswordInputField</arg>
+<arg>text=gowid26181!</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240604 14:32:19.441" level="INFO">Typing text 'gowid26181!' into text field 'id=loginCardPasswordInputField'.</msg>
+<status status="PASS" starttime="20240604 14:32:19.440" endtime="20240604 14:32:19.521"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login_submit</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240604 14:32:19.521" level="INFO">Clicking element 'id=login_submit'.</msg>
+<status status="PASS" starttime="20240604 14:32:19.521" endtime="20240604 14:32:19.559"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>time_=3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240604 14:32:22.560" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20240604 14:32:19.559" endtime="20240604 14:32:22.560"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=/html/body/div[1]/section/aside/div[5]/button[2]/div</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240604 14:32:22.561" level="INFO">Clicking element 'xpath=/html/body/div[1]/section/aside/div[5]/button[2]/div'.</msg>
+<msg timestamp="20240604 14:32:22.636" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20240604 14:32:22.636" level="FAIL">Element with locator 'xpath=/html/body/div[1]/section/aside/div[5]/button[2]/div' not found.</msg>
+<status status="FAIL" starttime="20240604 14:32:22.560" endtime="20240604 14:32:22.637"/>
+</kw>
+<kw name="Reload Page" library="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:22.637" endtime="20240604 14:32:22.637"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>time_=3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:22.637" endtime="20240604 14:32:22.637"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=/html/body/div[1]/section/div/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:22.637" endtime="20240604 14:32:22.637"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=expenseManagementApprovalSummaryCardBasicSelectBox</arg>
+<arg>text=1914</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:22.638" endtime="20240604 14:32:22.638"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=/html/body/div[1]/section/div/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div[2]/div/ul/li/div/p</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:22.638" endtime="20240604 14:32:22.638"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>time_=3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:22.638" endtime="20240604 14:32:22.638"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=/html/body/div[1]/section/div/div[1]/div/div[2]/div[6]/table/tbody/tr[1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:22.638" endtime="20240604 14:32:22.639"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>time_=3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:22.639" endtime="20240604 14:32:22.639"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=approvalSelectApproveFromApprovedButton</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:22.639" endtime="20240604 14:32:22.639"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id=approvalSelectApproveSaveButton</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:22.640" endtime="20240604 14:32:22.640"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>xpath=/html/body/div[2]/div/div/div/div[1]/button[3]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:22.640" endtime="20240604 14:32:22.640"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:22.640" endtime="20240604 14:32:22.640"/>
+</kw>
+<status status="FAIL" starttime="20240604 14:32:15.655" endtime="20240604 14:32:22.640">Element with locator 'xpath=/html/body/div[1]/section/aside/div[5]/button[2]/div' not found.</status>
+</test>
+<test id="s1-t6" name="영수증 처리 상태 확인 - 일반 사용자" line="103">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>https://stg-expense.gowid.com/login</arg>
+<arg>Chrome</arg>
+<arg>executable_path=/Users/gowid/Desktop/cucuumber/chromedriver</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240604 14:32:22.642" level="INFO">Opening browser 'Chrome' to base url 'https://stg-expense.gowid.com/login'.</msg>
+<status status="PASS" starttime="20240604 14:32:22.641" endtime="20240604 14:32:24.642"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=loginCardEmailInputField</arg>
+<arg>text=tdg-normal1@gowid.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240604 14:32:24.644" level="INFO">Typing text 'tdg-normal1@gowid.com' into text field 'id=loginCardEmailInputField'.</msg>
+<msg timestamp="20240604 14:32:24.646" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=125.0.6422.114)
+Stacktrace:
+0   chromedriver                        0x0000000101132934 chromedriver + 4368692
+1   chromedriver                        0x000000010112adc8 chromedriver + 4337096
+2   chromedriver                        0x0000000100d4ec04 chromedriver + 289796
+3   chromedriver                        0x0000000100d29918 chromedriver + 137496
+4   chromedriver                        0x0000000100db5ab8 chromedriver + 711352
+5   chromedriver                        0x0000000100dc8d08 chromedriver + 789768
+6   chromedriver                        0x0000000100d85ab4 chromedriver + 514740
+7   chromedriver                        0x0000000100d8650c chromedriver + 517388
+8   chromedriver                        0x00000001010f6e50 chromedriver + 4124240
+9   chromedriver                        0x00000001010fbc40 chromedriver + 4144192
+10  chromedriver                        0x00000001010dc818 chromedriver + 4016152
+11  chromedriver                        0x00000001010fc570 chromedriver + 4146544
+12  chromedriver                        0x00000001010ce2cc chromedriver + 3957452
+13  chromedriver                        0x000000010111beb8 chromedriver + 4275896
+14  chromedriver                        0x000000010111c034 chromedriver + 4276276
+15  chromedriver                        0x000000010112aa28 chromedriver + 4336168
+16  libsystem_pthread.dylib             0x00000001838bef94 _pthread_start + 136
+17  libsystem_pthread.dylib             0x00000001838b9d34 thread_start + 8
+</msg>
+<msg timestamp="20240604 14:32:24.647" level="FAIL">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=125.0.6422.114)
+Stacktrace:
+0   chromedriver                        0x0000000101132934 chromedriver + 4368692
+1   chromedriver                        0x000000010112adc8 chromedriver + 4337096
+2   chromedriver                        0x0000000100d4ec04 chromedriver + 289796
+3   chromedriver                        0x0000000100d29918 chromedriver + 137496
+4   chromedriver                        0x0000000100db5ab8 chromedriver + 711352
+5   chromedriver                        0x0000000100dc8d08 chromedriver + 789768
+6   chromedriver                        0x0000000100d85ab4 chromedriver + 514740
+7   chromedriver                        0x0000000100d8650c chromedriver + 517388
+8   chromedriver                        0x00000001010f6e50 chromedriver + 4124240
+9   chromedriver                        0x00000001010fbc40 chromedriver + 4144192
+10  chromedriver                        0x00000001010dc818 chromedriver + 4016152
+11  chromedriver                        0x00000001010fc570 chromedriver + 4146544
+12  chromedriver                        0x00000001010ce2cc chromedriver + 3957452
+13  chromedriver                        0x000000010111beb8 chromedriver + 4275896
+14  chromedriver                        0x000000010111c034 chromedriver + 4276276
+15  chromedriver                        0x000000010112aa28 chromedriver + 4336168
+16  libsystem_pthread.dylib             0x00000001838bef94 _pthread_start + 136
+17  libsystem_pthread.dylib             0x00000001838b9d34 thread_start + 8
+</msg>
+<status status="FAIL" starttime="20240604 14:32:24.643" endtime="20240604 14:32:24.650"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=loginCardPasswordInputField</arg>
+<arg>text=gowid26181!</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:24.650" endtime="20240604 14:32:24.651"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login_submit</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:24.651" endtime="20240604 14:32:24.651"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>time_=3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:24.651" endtime="20240604 14:32:24.651"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=expenseSubmitReceiptApprovalSummaryCardBasicSelectBox</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:24.652" endtime="20240604 14:32:24.652"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=expenseSubmitReceiptApprovalSummaryCardBasicSelectBox</arg>
+<arg>text=1914</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:24.652" endtime="20240604 14:32:24.652"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=/html/body/div[1]/section/div/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div[2]/div/ul/li/div/p</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:24.652" endtime="20240604 14:32:24.653"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>time_=3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:24.653" endtime="20240604 14:32:24.653"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=/html/body/div[1]/section/div/div[1]/div/div[2]/div[6]/table/tbody/tr[1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:24.653" endtime="20240604 14:32:24.653"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>time_=3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:24.653" endtime="20240604 14:32:24.653"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${status_result}</var>
+<arg>id=approvalStatusButton</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:24.654" endtime="20240604 14:32:24.654"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>'${status_result}' == '승인'</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:24.654" endtime="20240604 14:32:24.654"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="NOT RUN" starttime="20240604 14:32:24.654" endtime="20240604 14:32:24.654"/>
+</kw>
+<status status="FAIL" starttime="20240604 14:32:22.641" endtime="20240604 14:32:24.654">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=125.0.6422.114)
+Stacktrace:
+0   chromedriver                        0x0000000101132934 chromedriver + 4368692
+1   chromedriver                        0x000000010112adc8 chromedriver + 4337096
+2   chromedriver                        0x0000000100d4ec04 chromedriver + 289796
+3   chromedriver                        0x0000000100d29918 chromedriver + 137496
+4   chromedriver                        0x0000000100db5ab8 chromedriver + 711352
+5   chromedriver                        0x0000000100dc8d08 chromedriver + 789768
+6   chromedriver                        0x0000000100d85ab4 chromedriver + 514740
+7   chromedriver                        0x0000000100d8650c chromedriver + 517388
+8   chromedriver                        0x00000001010f6e50 chromedriver + 4124240
+9   chromedriver                        0x00000001010fbc40 chromedriver + 4144192
+10  chromedriver                        0x00000001010dc818 chromedriver + 4016152
+11  chromedriver                        0x00000001010fc570 chromedriver + 4146544
+12  chromedriver                        0x00000001010ce2cc chromedriver + 3957452
+13  chromedriver                        0x000000010111beb8 chromedriver + 4275896
+14  chromedriver                        0x000000010111c034 chromedriver + 4276276
+15  chromedriver                        0x000000010112aa28 chromedriver + 4336168
+16  libsystem_pthread.dylib             0x00000001838bef94 _pthread_start + 136
+17  libsystem_pthread.dylib             0x00000001838b9d34 thread_start + 8
+</status>
+</test>
+<doc>Example using the space separated format.</doc>
+<status status="FAIL" starttime="20240604 14:32:08.212" endtime="20240604 14:32:24.655"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="3" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="3" skip="0" id="s1" name="Robottest">Robottest</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20240604 14:32:24.646" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=125.0.6422.114)
+Stacktrace:
+0   chromedriver                        0x0000000101132934 chromedriver + 4368692
+1   chromedriver                        0x000000010112adc8 chromedriver + 4337096
+2   chromedriver                        0x0000000100d4ec04 chromedriver + 289796
+3   chromedriver                        0x0000000100d29918 chromedriver + 137496
+4   chromedriver                        0x0000000100db5ab8 chromedriver + 711352
+5   chromedriver                        0x0000000100dc8d08 chromedriver + 789768
+6   chromedriver                        0x0000000100d85ab4 chromedriver + 514740
+7   chromedriver                        0x0000000100d8650c chromedriver + 517388
+8   chromedriver                        0x00000001010f6e50 chromedriver + 4124240
+9   chromedriver                        0x00000001010fbc40 chromedriver + 4144192
+10  chromedriver                        0x00000001010dc818 chromedriver + 4016152
+11  chromedriver                        0x00000001010fc570 chromedriver + 4146544
+12  chromedriver                        0x00000001010ce2cc chromedriver + 3957452
+13  chromedriver                        0x000000010111beb8 chromedriver + 4275896
+14  chromedriver                        0x000000010111c034 chromedriver + 4276276
+15  chromedriver                        0x000000010112aa28 chromedriver + 4336168
+16  libsystem_pthread.dylib             0x00000001838bef94 _pthread_start + 136
+17  libsystem_pthread.dylib             0x00000001838b9d34 thread_start + 8
+</msg>
+</errors>
+</robot>
